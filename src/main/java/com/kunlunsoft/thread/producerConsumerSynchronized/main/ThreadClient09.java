@@ -1,16 +1,16 @@
-package com.kunlunsoft.thread.producerConsumer.main;
+package com.kunlunsoft.thread.producerConsumerSynchronized.main;
 
-import com.kunlunsoft.thread.producerConsumer.vo.Consumer03;
-import com.kunlunsoft.thread.producerConsumer.vo.Producer03;
-import com.kunlunsoft.thread.producerConsumer.vo.SharedProduct;
+import com.kunlunsoft.thread.producerConsumerSynchronized.vo.Consumer04;
+import com.kunlunsoft.thread.producerConsumerSynchronized.vo.Producer04;
+import com.kunlunsoft.thread.producerConsumerSynchronized.vo.SharedProduct;
 
 /***
  * 经典的生产者消费者问题
  */
 public class ThreadClient09 {
     private static SharedProduct sharedProduct = new SharedProduct();
-    private static Consumer03 consumer02 = new Consumer03(sharedProduct);
-    private static Producer03 producer02 = new Producer03(sharedProduct);
+    private static Consumer04 consumer02 = new Consumer04(sharedProduct);
+    private static Producer04 producer02 = new Producer04(sharedProduct);
 
     public static void main(String[] args) {
 
