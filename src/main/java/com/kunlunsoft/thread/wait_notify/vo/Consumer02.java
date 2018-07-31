@@ -1,17 +1,16 @@
 package com.kunlunsoft.thread.wait_notify.vo;
 
 import com.time.util.TimeHWUtil;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Random;
 
 @Data
+@AllArgsConstructor
 public class Consumer02 {
     private SharedProduct sharedProduct;
 
-    public Consumer02(SharedProduct sharedProduct) {
-        this.sharedProduct = sharedProduct;
-    }
 
     public void eat(int num) {
         synchronized (sharedProduct) {
