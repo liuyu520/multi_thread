@@ -1,15 +1,15 @@
 package com.kunlunsoft.thread.main;
 
-import com.kunlunsoft.thread.runnable.CountRunnable;
-import com.kunlunsoft.thread.vo.UnSafeSharedObject;
+import com.kunlunsoft.thread.runnable.SafeCountRunnable;
+import com.kunlunsoft.thread.vo.SafeSharedObject;
 
 /***
- * 线程不安全
+ * 线程安全
  */
-public class ThreadClient01 {
+public class ThreadClient02_Safe {
     public static void main(String[] args) {
-        UnSafeSharedObject sharedObject = new UnSafeSharedObject();
-        CountRunnable countRunnable = new CountRunnable(sharedObject);
+        SafeSharedObject sharedObject = new SafeSharedObject();
+        SafeCountRunnable countRunnable = new SafeCountRunnable(sharedObject);
         new Thread(countRunnable, "a").start();
         new Thread(countRunnable, "b").start();
         new Thread(countRunnable, "c").start();
