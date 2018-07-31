@@ -13,9 +13,10 @@ public class Consumer02 {
     }
 
     public void eat(int num) {
+//        synchronized (sharedProduct) {
         if (this.sharedProduct.getTotal() >= num) {
             try {
-                Thread.sleep(10 + new Random().nextInt(20));
+                Thread.sleep(10 + new Random().nextInt(100));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -24,5 +25,7 @@ public class Consumer02 {
         } else {
             System.out.println("消费者,容量不够 :" + this.sharedProduct.getTotal());
         }
+//        }
+
     }
 }

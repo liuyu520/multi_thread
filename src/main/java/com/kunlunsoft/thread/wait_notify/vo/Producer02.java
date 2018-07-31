@@ -14,17 +14,19 @@ public class Producer02 {
     }
 
     public void add(int num) {
+//        synchronized (sharedProduct) {
         int total = this.sharedProduct.getTotal();
         if (total > max_limit) {
             System.out.println("生产者不用生产,当前容量 :" + total);
             return;
         }
         try {
-            Thread.sleep(10 + new Random().nextInt(20));
+            Thread.sleep(10 + new Random().nextInt(100));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.sharedProduct.add(num);
         System.out.println("生产者生产 :" + num);
+//        }
     }
 }
