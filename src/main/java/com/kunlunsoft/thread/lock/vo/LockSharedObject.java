@@ -3,7 +3,7 @@ package com.kunlunsoft.thread.lock.vo;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 线程不安全
+ * 线程安全
  */
 public class LockSharedObject {
     private int count = 0;
@@ -18,9 +18,12 @@ public class LockSharedObject {
     }
 
     public void add(int num) {
-        if (!reentrantLock.tryLock()) {
-            return;
-        }
+        reentrantLock.lock();
+
+        //业务逻辑
         count = count + num;
+
+        //必须要释放锁,最好放在finaly语句块中
+        reentrantLock.unlock();
     }
 }
