@@ -3,7 +3,7 @@ package com.kunlunsoft.thread.lock.vo;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 线程安全
+ * 线程安全 ,使用 ReentrantLock
  */
 public class LockSharedObject {
     private int count = 0;

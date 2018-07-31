@@ -1,15 +1,15 @@
-package com.kunlunsoft.thread.lock.main;
+package com.kunlunsoft.thread.atomicInteger.main;
 
-import com.kunlunsoft.thread.lock.runnable.LockCountRunnable;
-import com.kunlunsoft.thread.lock.vo.LockSharedObject;
+import com.kunlunsoft.thread.atomicInteger.runnable.AtomicIntegerCountRunnable;
+import com.kunlunsoft.thread.atomicInteger.vo.AtomicIntegerSharedObject;
 
 /***
- * 线程安全 ,使用 ReentrantLock
+ * 线程安全 ,使用atomic wrapper class如atomicInteger，或者使用自己保证原子的操作，则等同于synchronized
  */
-public class ThreadClient03 {
+public class ThreadClient05 {
     public static void main(String[] args) {
-        LockSharedObject sharedObject = new LockSharedObject();
-        LockCountRunnable countRunnable = new LockCountRunnable(sharedObject);
+        AtomicIntegerSharedObject sharedObject = new AtomicIntegerSharedObject();
+        AtomicIntegerCountRunnable countRunnable = new AtomicIntegerCountRunnable(sharedObject);
         new Thread(countRunnable, "a").start();
         new Thread(countRunnable, "b").start();
         new Thread(countRunnable, "c").start();

@@ -4,7 +4,7 @@ import com.kunlunsoft.thread.readWriteLock.runnable.ReadWriteLockCountRunnable;
 import com.kunlunsoft.thread.readWriteLock.vo.ReadWriteLockSharedObject;
 
 /***
- * 线程不安全
+ * 线程安全 ,使用可重入的读写锁:ReentrantReadWriteLock
  */
 public class ThreadClient04 {
     public static void main(String[] args) {
