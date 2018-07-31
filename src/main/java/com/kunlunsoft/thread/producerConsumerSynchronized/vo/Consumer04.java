@@ -1,16 +1,15 @@
 package com.kunlunsoft.thread.producerConsumerSynchronized.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Random;
 
 @Data
+@AllArgsConstructor
 public class Consumer04 {
-    private SharedProduct sharedProduct;
 
-    public Consumer04(SharedProduct sharedProduct) {
-        this.sharedProduct = sharedProduct;
-    }
+    private SharedProduct sharedProduct;
 
     public void eat(int num) {
         synchronized (sharedProduct) {

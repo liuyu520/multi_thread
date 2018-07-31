@@ -1,17 +1,16 @@
 package com.kunlunsoft.thread.producerConsumer.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Random;
 
 @Data
+@AllArgsConstructor
 public class Producer03 {
     public static final int max_limit = 30;
     private SharedProduct sharedProduct;
 
-    public Producer03(SharedProduct sharedProduct) {
-        this.sharedProduct = sharedProduct;
-    }
 
     public void add(int num) {
 //        synchronized (sharedProduct) {
