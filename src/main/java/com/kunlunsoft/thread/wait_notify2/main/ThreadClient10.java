@@ -1,5 +1,6 @@
 package com.kunlunsoft.thread.wait_notify2.main;
 
+import com.common.util.SystemHWUtil;
 import com.kunlunsoft.thread.wait_notify2.vo.Consumer06;
 import com.kunlunsoft.thread.wait_notify2.vo.Producer06;
 import com.kunlunsoft.thread.wait_notify2.vo.SharedProduct;
@@ -40,7 +41,7 @@ public class ThreadClient10 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        System.out.println(" :" + SystemHWUtil.DIVIDING_LINE);
         for (int i = 0; i < 5; i++) {
             new Thread(producerRunnable).start();
         }
