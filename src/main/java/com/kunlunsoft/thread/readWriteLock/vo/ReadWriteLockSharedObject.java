@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class ReadWriteLockSharedObject {
     private int count = 0;
     private ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-
+    ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
     public int getCount() {
         return count;
     }
@@ -19,7 +19,6 @@ public class ReadWriteLockSharedObject {
     }
 
     public void add(int num) {
-        ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
         writeLock.lock();
         //业务逻辑
         count = count + num;
