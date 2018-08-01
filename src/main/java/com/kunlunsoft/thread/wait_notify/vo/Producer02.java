@@ -17,6 +17,7 @@ public class Producer02 {
             int total = this.sharedProduct.getTotal();
             while (total > max_limit) {
                 System.out.println(Thread.currentThread() + "-生产者不用生产,当前容量 :" + total);
+//                this.sharedProduct.notifyAll();//容量满了 也应该通知
                 try {
                     this.sharedProduct.wait();
                 } catch (InterruptedException e) {

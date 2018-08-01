@@ -12,6 +12,10 @@ public class Consumer02 {
     private SharedProduct sharedProduct;
 
 
+    /***
+     * 消费
+     * @param num
+     */
     public void eat(int num) {
         synchronized (sharedProduct) {
             while (this.sharedProduct.getTotal() < num) {
@@ -30,7 +34,7 @@ public class Consumer02 {
                 e.printStackTrace();
             }
             this.sharedProduct.sub(num);
-            System.out.println(Thread.currentThread() + "消费者消费 :" + num);
+            System.out.println(Thread.currentThread() + "消费者消费 ###:" + num);
             this.sharedProduct.notifyAll();
 
         }
