@@ -35,6 +35,14 @@ public class ThreadClient08 {
         for (int i = 0; i < 5; i++) {
             new Thread(consumerRunnable).start();
         }
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        for (int i = 0; i < 5; i++) {
+            new Thread(producerRunnable).start();
+        }
     }
 }
