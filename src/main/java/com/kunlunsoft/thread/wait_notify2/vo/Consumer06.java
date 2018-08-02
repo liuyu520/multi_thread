@@ -18,25 +18,29 @@ public class Consumer06 {
      */
     public void eat(int num) {
         this.sharedProduct.lock();
-        while (this.sharedProduct.getTotal() < num) {
-            System.out.println(Thread.currentThread() + "消费者,容量不够 :" + this.sharedProduct.getTotal());
-            System.out.println(Thread.currentThread() + "消费者开始阻塞 :" + TimeHWUtil.getCurrentDateTime());
+        try {
+            while (this.sharedProduct.getTotal() < num) {
+                System.out.println(Thread.currentThread() + "消费者,容量不够 :" + this.sharedProduct.getTotal());
+                System.out.println(Thread.currentThread() + "消费者开始阻塞 :" + TimeHWUtil.getCurrentDateTime());
+                try {
+                    this.sharedProduct.consumerCondi.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "消费者阻塞结束 :" + TimeHWUtil.getCurrentDateTime());
+            }
             try {
-                this.sharedProduct.consumerCondi.await();
+                Thread.sleep(10 + new Random().nextInt(100));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(Thread.currentThread() + "消费者阻塞结束 :" + TimeHWUtil.getCurrentDateTime());
-        }
-        try {
-            Thread.sleep(10 + new Random().nextInt(100));
-        } catch (InterruptedException e) {
+            this.sharedProduct.sub(num);
+            System.out.println(Thread.currentThread() + "消费者消费 ###:" + num);
+            this.sharedProduct.producerCondi.signalAll();
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            this.sharedProduct.unlock();
         }
-        this.sharedProduct.sub(num);
-        System.out.println(Thread.currentThread() + "消费者消费 ###:" + num);
-        this.sharedProduct.producerCondi.signalAll();
-
-        this.sharedProduct.unlock();
     }
 }

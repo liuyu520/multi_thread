@@ -20,10 +20,15 @@ public class LockSharedObject {
     public void add(int num) {
         reentrantLock.lock();
 
-        //业务逻辑
-        count = count + num;
+        try {
+            //业务逻辑
+            count = count + num;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //必须要释放锁,最好放在finaly语句块中
+            reentrantLock.unlock();
+        }
 
-        //必须要释放锁,最好放在finaly语句块中
-        reentrantLock.unlock();
     }
 }
